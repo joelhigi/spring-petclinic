@@ -9,7 +9,9 @@ pipeline {
         }
         stage('SonarQube Analysis') {
             steps{
-                sh 'mvn verify sonar:sonar -Dsonar.projectKey=Pet-Clinic -Dsonar.projectName='Pet Clinic' -Dsonar.host.url=http://localhost:9000 -Dsonar.token=sqp_175ff9749f07e5ec29e601cacb1b38d60f9cdb6e'
+                script{
+                    sh 'mvn verify sonar:sonar -Dsonar.projectKey=Pet-Clinic -Dsonar.projectName='Pet Clinic' -Dsonar.host.url=http://localhost:9000 -Dsonar.token=sqp_175ff9749f07e5ec29e601cacb1b38d60f9cdb6e'
+                }
             }
         }
         stage('Run') {
