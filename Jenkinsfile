@@ -9,9 +9,11 @@ pipeline {
             }
         }
         stage('SonarQube Analysis') {
-            def mvn = tool 'MVN';
-            withSonarQubeEnv() {
-                sh "${mvn}/bin/mvn verify sonar:sonar -Dsonar.projectKey=Pet-Clinic -Dsonar.projectName='Pet Clinic'"
+            steps {
+                def mvn = tool 'MVN';
+                withSonarQubeEnv() {
+                    sh "${mvn}/bin/mvn verify sonar:sonar -Dsonar.projectKey=Pet-Clinic -Dsonar.projectName='Pet Clinic'"
+                }
             }
         }
         stage('Run') {
