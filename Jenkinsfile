@@ -8,11 +8,10 @@ pipeline {
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             }
         }
-        stage('SonarQube analysis') {
-            steps {
-                withSonarQubeEnv('sonarqube') {
-                    sh './mvnw sonar:sonar'
-                }
+        stage('SonarQube Analysis') {
+            def mvn = tool 'MVN';
+            withSonarQubeEnv() {
+                sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=Pet-Clinic -Dsonar.projectName='Pet Clinic'"
             }
         }
         stage('Run') {
