@@ -11,7 +11,7 @@ pipeline {
             steps{
                 script {
                     def mvn = tool 'Maven';
-                    withSonarQubeEnv('SonarQube') {
+                    withSonarQubeEnv() {
                         sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=Pet-Clinic -Dsonar.projectName='Pet Clinic'"
                     }
                 }
