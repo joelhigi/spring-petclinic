@@ -9,12 +9,7 @@ pipeline {
         }
         stage('SonarQube Analysis') {
             steps{
-                script {
-                    def mvn = tool 'Maven';
-                    withSonarQubeEnv() {
-                        sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=Pet-Clinic -Dsonar.projectName='Pet Clinic'"
-                    }
-                }
+                sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=Pet-Clinic -Dsonar.projectName='Pet Clinic' -Dsonar.host.url=http://localhost:9000 -Dsonar.token=sqp_175ff9749f07e5ec29e601cacb1b38d60f9cdb6e'
             }
         }
         stage('Run') {
