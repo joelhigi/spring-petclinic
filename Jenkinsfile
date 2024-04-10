@@ -10,7 +10,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps{
                 script{
-                    sh 'mvn clean verify sonar:sonar -Dsonar.login=admin -Dsonar.password=sonarpass -Dsonar.projectKey=Pet-Clinic -Dsonar.projectName='Pet Clinic' -Dsonar.host.url=http://localhost:9000 -Dsonar.token=sqp_175ff9749f07e5ec29e601cacb1b38d60f9cdb6e'
+                    sh 'mvn verify sonar:sonar'
                 }
             }
         }
