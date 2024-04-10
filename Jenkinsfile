@@ -10,7 +10,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps{
                 script{
-                    sh 'mvn verify sonar:sonar'
+                    sh 'mvn verify sonar:sonar -Dsonar.login=admin -Dsonar.password=sonarpass'
                 }
             }
         }
