@@ -12,6 +12,9 @@ pipeline {
                 sh 'ansible-playbook -i ansible_hosts.ini ansible_pb.yaml'
             }
         }
+        stage('Deployment Successful'){
+            echo 'Pet Clinic deployed at http://localhost:8081.'
+        }
     }
     post {
         success {
