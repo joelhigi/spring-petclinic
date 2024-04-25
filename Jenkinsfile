@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Ansible Deployment') {
             steps {
-                sh 'ansible-playbook -i ansible_hosts.ini ansible_pb.yml'
+                sh 'ansible-playbook -i ansible_hosts.ini ansible_pb.yaml'
             }
         }
     }
