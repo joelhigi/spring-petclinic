@@ -13,7 +13,9 @@ pipeline {
             }
         }
         stage('Deployment Successful'){
-            echo 'Pet Clinic deployed at http://localhost:8081.'
+            steps{
+                echo 'Pet Clinic deployed at http://localhost:8081.'
+            }
         }
     }
     post {
