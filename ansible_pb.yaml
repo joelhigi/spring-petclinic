@@ -1,6 +1,6 @@
 - name: Deploy Pet Clinic to Production Server
   hosts: production
-  become: yes
+  remote_user: vagrant
 
   tasks:
   - name: Install OpenJDK 17
