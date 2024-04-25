@@ -7,14 +7,9 @@ pipeline {
                 sh './mvnw clean package'
             }
         }
-        stage('SonarQube Analysis') {
-            steps{
-                sh 'mvn verify sonar:sonar -Dsonar.login=admin -Dsonar.password=sonarpass'
-            }
-        }
-        stage('Run') {
+        stage('Ansible Deployment') {
             steps {
-                sh 'java -jar target/spring-petclinic-3.2.0-SNAPSHOT.jar --server.port=8081'
+                sh 'ansible-playbook -i ansible_hosts.ini ansible_pb.yml'
             }
         }
     }

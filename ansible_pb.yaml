@@ -1,19 +1,13 @@
-- name: deploy one petclinic to one server
+- name: Deploy Pet Clinic to Production Server
   hosts: service
   remote_user: vagrant
 
   tasks:
-  - name: copy the jar file to target host
+  - name: Copy JAR to Production Server
     copy:
-      src: ./target/spring-petclinic-2.4.2.jar
+      src: ./target/spring-petclinic-3.2.0-SNAPSHOT.jar
       dest: ./petclinic.jar
-  - name: install openjdk11
-    become: yes
-    apt:
-      name: openjdk-11-jre
-      state: latest
-      update_cache: yes
-  - name: run the jar file
-    shell: nohup java -jar petclinic.jar &
+  - name: Execute JAR file
+    shell: nohup java -jar petclinic.jar --server.port=8081
     args:
       executable: /bin/bash
